@@ -4,6 +4,7 @@
 #define termo 13
 
 /*
+Schéma des pins utilisées par le set segment
     A
    ---
 F |   | B
@@ -14,6 +15,8 @@ E |   | C
    ---   .H
     D
  */
+
+// Définition variables et constantes
 
 int pinA = 2;
 int pinB = 3;
@@ -31,36 +34,7 @@ int loops = 500;
 AM2302 dht(termo);
 const int number[11] = {0b1000000, 0b1111001, 0b0100100, 0b0110000, 0b0011001, 0b0010010, 0b0000010, 0b1111000, 0b0000000, 0b0010000, 0b0111111};
 
-
-// the setup routine runs once when you press reset:
-void setup() {                
-  // initialize the digital pins as outputs.
-  Serial.begin(9600);
-  pinMode(pinA, OUTPUT);     
-  pinMode(pinB, OUTPUT);     
-  pinMode(pinC, OUTPUT);     
-  pinMode(pinD, OUTPUT);     
-  pinMode(pinE, OUTPUT);     
-  pinMode(pinF, OUTPUT);     
-  pinMode(pinG, OUTPUT);
-  pinMode(pinH, OUTPUT);   
-  pinMode(D1, OUTPUT);  
-  pinMode(D2, OUTPUT);  
-  pinMode(D3, OUTPUT);  
-  pinMode(D4, OUTPUT);
-  dht.begin();
-}
-
-void writeNumber(int i){
-  if(i>=0 && i<=9){
-    int pin;
-    int a;
-    for (pin = 2, a = 0; a < 7; pin++, a++){
-      digitalWrite(pin, bitRead(number[i], a));
-    }
-  }
-}
-
+// Allumage du digit correspondant à la valeur à afficher
 void setDigit(int digit){
   if(digit>=1 && digit<=4){
     switch (digit)
@@ -99,6 +73,18 @@ void setDigit(int digit){
   }
 }
 
+//Ecrire un nombre au format digital
+void writeNumber(int i){
+  if(i>=0 && i<=9){
+    int pin;
+    int a;
+    for (pin = 2, a = 0; a < 7; pin++, a++){
+      digitalWrite(pin, bitRead(number[i], a));
+    }
+  }
+}
+
+//Ecrire la température transmise par le capteur thermique
 void writeTemp(float i){
   //signe température
   setDigit(1);
@@ -131,6 +117,25 @@ void writeTemp(float i){
   digitalWrite(pinH, HIGH);
   writeNumber(decimal);
 
+}
+
+// the setup routine runs once when you press reset:
+void setup() {                
+  // initialize the digital pins as outputs.
+  Serial.begin(9600);
+  pinMode(pinA, OUTPUT);     
+  pinMode(pinB, OUTPUT);     
+  pinMode(pinC, OUTPUT);     
+  pinMode(pinD, OUTPUT);     
+  pinMode(pinE, OUTPUT);     
+  pinMode(pinF, OUTPUT);     
+  pinMode(pinG, OUTPUT);
+  pinMode(pinH, OUTPUT);   
+  pinMode(D1, OUTPUT);  
+  pinMode(D2, OUTPUT);  
+  pinMode(D3, OUTPUT);  
+  pinMode(D4, OUTPUT);
+  dht.begin();
 }
 
 void loop() {
