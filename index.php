@@ -17,6 +17,8 @@
             $temperature[] = $obj->temperature;
         }
         $result->close();
+
+        echo count($date);
     }
     ?>
 </div>
@@ -37,15 +39,15 @@
         <?php getData(20) ?>
         context.clearRect(0, 0, canva.width, canva.height);
         labels = <?php $data = "[";
-                        foreach (explode(",", implode(",", $date)) as $val) {
-                            $data .= "'";
-                            $data .= $val;
-                            $data .= "',";
-                        }
+                    foreach (explode(",", implode(",", $date)) as $val) {
+                        $data .= "'";
+                        $data .= $val;
+                        $data .= "',";
+                    }
 
-                        substr($data, 0, -1);
-                        $data .= "]";
-                        echo $data ?>;
+                    substr($data, 0, -1);
+                    $data .= "]";
+                    echo $data ?>;
         data = {
             labels: labels,
             datasets: [{
@@ -67,9 +69,6 @@
         11000);
 
     updateData();
-    <?php
-    echo count($label);
-    ?>
     const configLineChart = {
         type: "line",
         data,
@@ -79,8 +78,6 @@
         document.getElementById("chartLine"),
         configLineChart
     );
-
-
 </script>
 
 </html>
