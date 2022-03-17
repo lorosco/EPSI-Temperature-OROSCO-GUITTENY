@@ -6,6 +6,7 @@ $temperature = array();
 
 function getData($limit)
 {
+    global $date, $temperature;
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
     $link = new mysqli("localhost", "epsi", "epsi", "epsi");
     $result = $link->query("SELECT * FROM temperature ORDER BY date desc LIMIT $limit");
