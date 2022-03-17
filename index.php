@@ -40,6 +40,7 @@
             global $temperature;
             echo end($temperature);
             ?>
+            °C
         </span>
         <br>
         <button id="refresh" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="document.location.reload(false)" style="margin-left:2.8vw; margin-top: 10px;"> Rafraichir </button>

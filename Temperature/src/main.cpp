@@ -29,10 +29,13 @@ int D1 = A1;
 int D2 = A2;
 int D3 = A3;
 int D4 = A4;
+
+//variables affichage 
 int loops = 500;
 AM2302 dht(termo);
 const int number[11] = {0b1000000, 0b1111001, 0b0100100, 0b0110000, 0b0011001, 0b0010010, 0b0000010, 0b1111000, 0b0000000, 0b0010000, 0b0111111};
 
+//variables internet
 #include <SPI.h>
 #include <Ethernet.h>
 
@@ -46,6 +49,7 @@ char   HOST_NAME[] = "temperature.guitteny.net"; // change to your PC's IP addre
 String PATH_NAME   = "/insert_temp.php";
 String queryString = "?username=epsi&password=epsi&temperature=";
 
+//def fonction
 void setDigit(int digit);
 void writeNumber(int i);
 void writeTemp(float i);
@@ -77,11 +81,13 @@ void setup() {
 }
 
 void loop() {
+  //mesure température et envoie valeur au serveur
   if(loops <= 0){
     dht.readTemperature();
     loops = 500;
     sendDataToDB(dht.temperature_C);
   }
+  //écrire la température sur l'afficheur 7 seg
   writeTemp(dht.temperature_C);
   delay(5);
   loops--;
