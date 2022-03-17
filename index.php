@@ -35,7 +35,7 @@
 
     function updateData() {
         <?php getData(20) ?>
-        //context.clearRect(0, 0, canva.width, canva.height);
+        context.clearRect(0, 0, canva.width, canva.height);
         labels = <?php $data = "[";
                         foreach (explode(",", implode(",", $date)) as $val) {
                             $data .= "'";
@@ -49,7 +49,7 @@
         data = {
             labels: labels,
             datasets: [{
-                label: "Temperature en foncion du temps",
+                label: "Temperature en fonction du temps",
                 backgroundColor: "hsl(252, 82.9%, 67.8%)",
                 borderColor: "hsl(252, 82.9%, 67.8%)",
                 data: <?php $data = "[";
@@ -67,7 +67,9 @@
         11000);
 
     updateData();
-
+    <?php
+    echo count($label);
+    ?>
     const configLineChart = {
         type: "line",
         data,
