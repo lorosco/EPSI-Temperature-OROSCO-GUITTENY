@@ -34,7 +34,7 @@
     <span>
         <?php
         global $temperature;
-        echo $temperature[count($temperature)-1]; 
+        echo end($temperature); 
         ?> </span>
 
     <!--Required chart.js-->
