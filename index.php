@@ -21,6 +21,8 @@
             $date[] = $obj->date;
             $temperature[] = $obj->temperature;
         }
+        array_reverse($date);
+        array_reverse($temperature);
         $result->close();
     }
     getData(20); ?>
