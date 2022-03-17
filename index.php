@@ -15,8 +15,8 @@
         }
         $result->close();
 
-        echo $date;
-        echo $temperature;
+        echo count($date);
+        echo count($temperature);
 
         ?>
     </p>
