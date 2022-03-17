@@ -26,6 +26,9 @@
 
 <!-- Chart line -->
 <script>
+    let data, labels;
+
+
     let canva = document.getElementById("chartLine");
 
     let context = canva.getContext("2d");
@@ -33,7 +36,7 @@
     function updateData() {
         <?php getData(20) ?>
         context.clearRect(0, 0, canva.width, canva.height);
-        const labels = <?php $data = "[";
+        labels = <?php $data = "[";
                         foreach (explode(",", implode(",", $date)) as $val) {
                             $data .= "'";
                             $data .= $val;
@@ -43,7 +46,7 @@
                         substr($data, 0, -1);
                         $data .= "]";
                         echo $data ?>;
-        const data = {
+        data = {
             labels: labels,
             datasets: [{
                 label: "Temperature en foncion du temps",
