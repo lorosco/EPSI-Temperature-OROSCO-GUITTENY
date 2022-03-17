@@ -27,14 +27,21 @@
 
 <!-- Chart line -->
 <script>
-    const labels;
+    const labels = <?="[".implode(",",$date)."]"?>;
     const data = {
-        labels: $date,
+        labels: labels,
         datasets: [{
             label: "Temperature en foncion du temps",
             backgroundColor: "hsl(252, 82.9%, 67.8%)",
             borderColor: "hsl(252, 82.9%, 67.8%)",
-            data: $temperature,
+            data: <?$data = "[";
+            foreach(explode(",",implode(",",$temperature)) as $val){
+                $data.= intval($val);
+                $data.= ",";
+            }
+            substr($data,0,-1);
+            $data.= "]";
+            echo $data?>,
         }, ],
     };
 
