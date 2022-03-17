@@ -53,9 +53,8 @@
         let context = canva.getContext("2d");
 
         function updateData() {
-            <?php getData(20);
-            ?>
-            context.clearRect(0, 0, canva.width, canva.height);
+            
+            //context.clearRect(0, 0, canva.width, canva.height);
             labels = <?php $data = "[";
                         global $date;
                         foreach (explode(",", implode(",", $date)) as $val) {
