@@ -31,14 +31,17 @@
             </canvas>
         </div>
     </div>
-    <button id="refresh" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="document.location.reload(false)"> Rafraichir </button>
-
-    <span>
-        <?php
-        global $temperature;
-        echo end($temperature); 
-        ?> </span>
-
+    <div style="left:30%; margin-top: 10px">
+        <span>
+            Last temperature:
+            <?php
+            global $temperature;
+            echo end($temperature);
+            ?>
+        </span>
+        <br>
+        <button id="refresh" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="document.location.reload(false)"> Rafraichir </button>
+    </div>
     <!--Required chart.js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js">
     </script>
@@ -53,7 +56,7 @@
         let context = canva.getContext("2d");
 
         function updateData() {
-            
+
             //context.clearRect(0, 0, canva.width, canva.height);
             labels = <?php $data = "[";
                         global $date;
