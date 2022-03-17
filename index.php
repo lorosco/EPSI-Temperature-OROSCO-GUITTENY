@@ -37,9 +37,10 @@ function getData($limit)
 
     function updateData() {
         <?php getData(20);
-        echo count($date); ?>
+        ?>
         context.clearRect(0, 0, canva.width, canva.height);
         labels = <?php $data = "[";
+                    global $date;
                     foreach (explode(",", implode(",", $date)) as $val) {
                         $data .= "'";
                         $data .= $val;
@@ -48,7 +49,7 @@ function getData($limit)
 
                     substr($data, 0, -1);
                     $data .= "]";
-                    echo $data ?>;
+                    ?>;
         data = {
             labels: labels,
             datasets: [{
@@ -56,6 +57,7 @@ function getData($limit)
                 backgroundColor: "hsl(252, 82.9%, 67.8%)",
                 borderColor: "hsl(252, 82.9%, 67.8%)",
                 data: <?php $data = "[";
+                        global $temperature;
                         foreach (explode(",", implode(",", $temperature)) as $val) {
                             $data .= $val;
                             $data .= ",";
