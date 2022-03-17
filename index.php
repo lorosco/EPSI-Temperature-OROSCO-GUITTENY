@@ -23,6 +23,15 @@ function getData($limit)
     <canvas class="p-10" id="chartLine"></canvas>
 </div>
 
+<button id="refresh" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="document.location.reload(false)" style="
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;"> Rafraichir </button>
+
+<span>
+    here will come last temperature display
+</span>
+
 <!-- Required chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -49,7 +58,7 @@ function getData($limit)
 
                     substr($data, 0, -1);
                     $data .= "]";
-                    echo $data;?>;
+                    echo $data; ?>;
         data = {
             labels: labels,
             datasets: [{
