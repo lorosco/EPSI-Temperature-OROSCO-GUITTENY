@@ -35,7 +35,7 @@
 
     function updateData() {
         <?php getData(20) ?>
-        context.clearRect(0, 0, canva.width, canva.height);
+        //context.clearRect(0, 0, canva.width, canva.height);
         labels = <?php $data = "[";
                         foreach (explode(",", implode(",", $date)) as $val) {
                             $data .= "'";
@@ -77,6 +77,8 @@
         document.getElementById("chartLine"),
         configLineChart
     );
+
+
 </script>
 
 </html>
