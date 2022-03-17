@@ -6,19 +6,11 @@
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $link =new mysqli("localhost", "epsi", "epsi", "epsi");
         $result = $link->query("SELECT * FROM temperature ORDER BY date desc LIMIT 100");
-        $line = "";
         while($obj = $result->fetch_object()){
-            $line.=$obj->date;
-            $line.=$obj->temperature;
+            $date = $obj->date;
+            $temperature = $obj->temperature;
         }
-        echo $line;
         $result->close();
-        echo "hého";
-
-        echo $result[1];
-
-        $temperature = $result['temperature'];
-        $date = $result['date'];
 
         echo $date;
         echo $temperature;
