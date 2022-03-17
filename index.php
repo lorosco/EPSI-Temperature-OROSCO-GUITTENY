@@ -49,7 +49,7 @@ function getData($limit)
 
                     substr($data, 0, -1);
                     $data .= "]";
-                    ?>;
+                    echo $data;?>;
         data = {
             labels: labels,
             datasets: [{
@@ -64,7 +64,7 @@ function getData($limit)
                         }
                         substr($data, 0, -1);
                         $data .= "]";
-                        echo $data ?>,
+                        echo $data; ?>,
             }, ],
         };
     }
