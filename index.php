@@ -31,7 +31,7 @@
             </canvas>
         </div>
     </div>
-    <div style="left:30%; margin-top: 10px">
+    <div style="left:30%; margin-top: 10px; position:absolute;">
         <span>
             Last temperature:
             <?php
@@ -40,7 +40,7 @@
             ?>
         </span>
         <br>
-        <button id="refresh" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="document.location.reload(false)"> Rafraichir </button>
+        <button id="refresh" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onclick="document.location.reload(false)" style="margin-left:2.8vw; margin-top: 10px;"> Rafraichir </button>
     </div>
     <!--Required chart.js-->
     <script src="https://cdn.jsdelivr.net/npm/chart.js">
