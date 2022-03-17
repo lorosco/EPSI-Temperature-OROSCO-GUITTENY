@@ -33,6 +33,7 @@
 
     <span>
         <?php
+        global $temperature;
         echo $temperature[count($temperature)-1]; 
         ?> </span>
 
