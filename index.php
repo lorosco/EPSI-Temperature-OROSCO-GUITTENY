@@ -22,7 +22,7 @@
             $temperature[] = $obj->temperature;
         }
         $date = array_reverse($date);
-        $temeprature = array_reverse($temperature);
+        $temperature = array_reverse($temperature);
         $result->close();
     }
     getData(20); ?>
