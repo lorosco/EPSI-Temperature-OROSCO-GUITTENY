@@ -18,7 +18,6 @@
         }
         $result->close();
 
-        echo count($date);
     }
     ?>
 </div>
@@ -36,7 +35,8 @@
     let context = canva.getContext("2d");
 
     function updateData() {
-        <?php getData(20) ?>
+        <?php getData(20);
+        echo count($date); ?>
         context.clearRect(0, 0, canva.width, canva.height);
         labels = <?php $data = "[";
                     foreach (explode(",", implode(",", $date)) as $val) {
