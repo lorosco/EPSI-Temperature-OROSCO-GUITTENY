@@ -9,7 +9,7 @@
 
         echo "hého";
 
-        echo $result->num_rows;
+        echo $result[1];
 
         $temperature = $result['temperature'];
         $date = $result['date'];
