@@ -36,7 +36,7 @@
             label: "Temperature en foncion du temps",
             backgroundColor: "hsl(252, 82.9%, 67.8%)",
             borderColor: "hsl(252, 82.9%, 67.8%)",
-            data: <? $data = "[";
+            data: <?php $data = "[";
                     foreach (explode(",", implode(",", $temperature)) as $val) {
                         $data .= intval($val);
                         $data .= ",";
