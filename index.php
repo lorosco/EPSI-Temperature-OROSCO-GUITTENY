@@ -5,7 +5,7 @@
         <?php
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         $link = mysqli_connect("localhost", "epsi", "epsi", "epsi");
-        $result = mysqli_query($link, "SELECT * FROM temperature LIMIT 100");
+        $result = $link->query("SELECT * FROM temperature LIMIT 100");
 
         echo "hého";
 
