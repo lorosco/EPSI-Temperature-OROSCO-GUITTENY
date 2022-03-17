@@ -1,15 +1,17 @@
+<html>
+
 <div class="shadow-lg rounded-lg overflow-hidden">
     <div class="py-3 px-5 bg-gray-50">Line chart</div>
     <canvas class="p-10" id="chartLine"></canvas>
     <p>
         <?php
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-        $link =new mysqli("localhost", "epsi", "epsi", "epsi");
+        $link = new mysqli("localhost", "epsi", "epsi", "epsi");
         $result = $link->query("SELECT * FROM temperature ORDER BY date desc LIMIT 100");
-        
+
         $date = array();
         $temperature = array();
-        while($obj = $result->fetch_object()){
+        while ($obj = $result->fetch_object()) {
             $date[] = $obj->date;
             $temperature[] = $obj->temperature;
         }
@@ -27,21 +29,21 @@
 
 <!-- Chart line -->
 <script>
-    const labels = <?="[".implode(",",$date)."]"?>;
+    const labels = <?= "[" . implode(",", $date) . "]" ?>;
     const data = {
         labels: labels,
         datasets: [{
             label: "Temperature en foncion du temps",
             backgroundColor: "hsl(252, 82.9%, 67.8%)",
             borderColor: "hsl(252, 82.9%, 67.8%)",
-            data: <?$data = "[";
-            foreach(explode(",",implode(",",$temperature)) as $val){
-                $data.= intval($val);
-                $data.= ",";
-            }
-            substr($data,0,-1);
-            $data.= "]";
-            echo $data?>,
+            data: <? $data = "[";
+                    foreach (explode(",", implode(",", $temperature)) as $val) {
+                        $data .= intval($val);
+                        $data .= ",";
+                    }
+                    substr($data, 0, -1);
+                    $data .= "]";
+                    echo $data ?>,
         }, ],
     };
 
@@ -64,3 +66,5 @@
 
     }
 </script>
+
+</html>
