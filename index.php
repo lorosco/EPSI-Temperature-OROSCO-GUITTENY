@@ -29,7 +29,16 @@
 
 <!-- Chart line -->
 <script>
-    const labels = <?= "[" . implode(",", $date) . "]" ?>;
+    const labels = <?php $data = "[";
+                    foreach (explode(",", implode(",", $date)) as $val) {
+                        $data .= "'";
+                        $data .= $val;
+                        $data .= "',";
+                    }
+
+                    substr($data, 0, -1);
+                    $data .= "]";
+                    echo $data ?>;
     const data = {
         labels: labels,
         datasets: [{
@@ -38,7 +47,7 @@
             borderColor: "hsl(252, 82.9%, 67.8%)",
             data: <?php $data = "[";
                     foreach (explode(",", implode(",", $temperature)) as $val) {
-                        $data .= intval($val);
+                        $data .= $val;
                         $data .= ",";
                     }
                     substr($data, 0, -1);
