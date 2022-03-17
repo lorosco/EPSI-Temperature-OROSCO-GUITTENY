@@ -22,7 +22,9 @@
             $temperature[] = $obj->temperature;
         }
         $result->close();
-    } ?>
+    }
+    getData(20); ?>
+
     <div style="width: 70%">
         <div class=" shadow-lg rounded-lg overflow-hidden">
             <canvas class="p-10" id="chartLine">
