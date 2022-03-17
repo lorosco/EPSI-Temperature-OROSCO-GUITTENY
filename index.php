@@ -30,37 +30,40 @@
 
     let context = canva.getContext("2d");
 
-    setInterval(function() {
-            <?php getData(20) ?>
-            context.clearRect(0, 0, canva.width, canva.height);
-            const labels = <?php $data = "[";
-                            foreach (explode(",", implode(",", $date)) as $val) {
-                                $data .= "'";
-                                $data .= $val;
-                                $data .= "',";
-                            }
+    function updateData() {
+        <?php getData(20) ?>
+        context.clearRect(0, 0, canva.width, canva.height);
+        const labels = <?php $data = "[";
+                        foreach (explode(",", implode(",", $date)) as $val) {
+                            $data .= "'";
+                            $data .= $val;
+                            $data .= "',";
+                        }
 
-                            substr($data, 0, -1);
-                            $data .= "]";
-                            echo $data ?>;
-            const data = {
-                labels: labels,
-                datasets: [{
-                    label: "Temperature en foncion du temps",
-                    backgroundColor: "hsl(252, 82.9%, 67.8%)",
-                    borderColor: "hsl(252, 82.9%, 67.8%)",
-                    data: <?php $data = "[";
-                            foreach (explode(",", implode(",", $temperature)) as $val) {
-                                $data .= $val;
-                                $data .= ",";
-                            }
-                            substr($data, 0, -1);
-                            $data .= "]";
-                            echo $data ?>,
-                }, ],
-            };
-        },
+                        substr($data, 0, -1);
+                        $data .= "]";
+                        echo $data ?>;
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: "Temperature en foncion du temps",
+                backgroundColor: "hsl(252, 82.9%, 67.8%)",
+                borderColor: "hsl(252, 82.9%, 67.8%)",
+                data: <?php $data = "[";
+                        foreach (explode(",", implode(",", $temperature)) as $val) {
+                            $data .= $val;
+                            $data .= ",";
+                        }
+                        substr($data, 0, -1);
+                        $data .= "]";
+                        echo $data ?>,
+            }, ],
+        };
+    }
+    setInterval(updateData(),
         11000);
+
+    updateData();
 
     const configLineChart = {
         type: "line",
