@@ -2,7 +2,7 @@
 #include "cactus_io_AM2302.h"
 
 /*
-Schéma des pins utilisées par le set segment
+Schéma des pins utilisées par l'afficheur 7 segment
     A
    ---
 F |   | B
@@ -164,7 +164,6 @@ void writeTemp(float i){
   delay(5);
   
   //valeur décimale de la T
-  //( (int)(floor( fabs( num ) * 10 ) ) ) % 10
   setDigit(4);
   int decimal =(int) ( ((float) i)*10)%10;
   digitalWrite(pinH, HIGH);
